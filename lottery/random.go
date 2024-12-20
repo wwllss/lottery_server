@@ -124,11 +124,11 @@ func generateLotteryNumbers(config lottery) [][]int {
 }
 
 // generateNumbers 根据配置生成号码
-func generateNumbers(r *rand.Rand, count, numberRange int, allowDuplicates bool) []int {
+func generateNumbers(r *rand.Rand, count, numberRange int, duplicates bool) []int {
 	var numbers []int
 	for len(numbers) < count {
 		num := r.Intn(numberRange) + 1
-		if allowDuplicates || !contains(numbers, num) {
+		if duplicates || !contains(numbers, num) {
 			numbers = append(numbers, num)
 		}
 	}
